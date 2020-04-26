@@ -38,6 +38,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //post is plural because of 1- many 
+    public function posts() {
+        return $this->hasMany('App\Post')->orderBy('created_at', 'DESC');
+    }
+
     public function profile() {
         return $this->hasOne(Profile::class);
     }
