@@ -8,16 +8,16 @@
         </div>
         <div class="col-9 pt-5">
             <div>
-                <h1>{{}}</h1>
+                <h1>{{$user->username}}</h1>
             </div>
             <div class="d-flex">
                 <div class="pr-5"><strong>9</strong> posts</div>
                 <div class="pr-5"><strong>4,631</strong> followers</div>
                 <div class="pr-5"><strong>130</strong> following</div>
             </div>
-            <div class="pt-4 font-weight-bold">jasonchong.tech</div>
-            <div>Welcome to my whitstagram profile!</div>
-            <div><a href="www.jasonchong.tech">www.jasonchong.tech</a></div>
+            <div class="pt-4 font-weight-bold">{{ $user->profile->title }}</div>
+            <div>{{ $user->profile->description }}</div>
+            <div><a href="www.jasonchong.tech">{{ $user->profile->url }}</a></div>
         </div>
     </div>
 
