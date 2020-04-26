@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
 {
@@ -21,7 +22,7 @@ class ProfilesController extends Controller
     public function update(User $user) 
     {
         $this->authorize('update', $user->profile);
-        
+
         $data = request()->validate([
             'title' => 'required',
             'description' => 'required',
@@ -29,7 +30,21 @@ class ProfilesController extends Controller
             'image' => '',
         ]);
 
-        auth()->user()->profile->update($data);
+        
+        if (request('image')) {
+            $imagePath = request('image')->store('profile', 'public');
+            
+            //wrap image and size it in 1200px width and 1200 px height
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+            $imageArray = ['image' => $imagePath];
+        }
+
+
+        auth()->user()->profile->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
 
         return redirect("/profile/{$user->id}");
     }
