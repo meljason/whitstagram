@@ -14,6 +14,10 @@ class Profile extends Model
         return '/storage/' . $imagePath;
     }
 
+    public function followers() {
+        return $this->belongsToMany(User::class);
+    }
+
     public function user() 
     {
         //creating relationship in fetching user id by their foreign key
