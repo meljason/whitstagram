@@ -3,15 +3,23 @@
 @section('content')
     <div class="container">
         @foreach($posts as $post)
-            <div class="row">
-                <div class="col-6 offset-3">
+            <div class="col-8 offset-2 pb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <img src="{{$post->user->profile->profileImage() }}" class="rounded-circle w-100 mr-3" style="max-width: 40px;">
+                            <span class="font-weight-bold">
+                                <a href="/profile/{{$post->user->id}}">
+                                    <span class="text-dark">{{$post->user->username}}</span>
+                                </a>
+                            </span>
+                        </p>
+                    </div>
+
                     <a href="/profile/{{$post->user->id}}"><img src="/storage/{{ $post->image }}" class="w-100" srcset=""></a>
-                </div>
-            </div>
-            <div class="row pt-2 pb-4">
-                <div class="col-6 offset-3">
-                    <div>
-                        <p>
+
+                    <div class="card-body">
+                        <p class="card-text">
                             <span class="font-weight-bold">
                                 <a href="/profile/{{$post->user->id}}">
                                     <span class="text-dark">{{$post->user->username}}</span>
