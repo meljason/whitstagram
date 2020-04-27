@@ -20,11 +20,9 @@
                 @endcan
             </div>
 
-            @guest
-                <div></div>
-            @else 
+            @can('update', $user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit Profile</a>
-            @endguest
+            @endcan
 
             <div class="d-flex">
                 <div class="pr-5"><strong>{{$postCount}}</strong> posts</div>
