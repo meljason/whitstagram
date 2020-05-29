@@ -9,7 +9,7 @@
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <div class="d-flex align-items-center pb-3">
-                    <div class="h4">{{$user->username}}</div>
+                    <div class="h4">{{$user->username}} <span><img src="/storage/profile/correct.png" alt="" srcset="" style="max-height: 20px;"></span></div>
 
                 <follow-button user-id="{{$user->id}}" follows="{{$follows}}"></follow-button>
 

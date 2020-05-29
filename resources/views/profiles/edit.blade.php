@@ -29,12 +29,12 @@
                 <div class="form-group row">
                     <label for="description" class="col-md-4 col-form-label">Description</label>
                     
-                    <input id="description" 
+                    <textarea id="description" 
                     type="text" 
                     class="form-control {{ $errors->has('description') ? ' is-invalid' : ''}}" 
                     name="description" 
-                    value="{{ old('description') ?? $user->profile->description }}" 
-                    autocomplete="description" autofocus>
+                    value="{{ old('description') ?? nl2br(e($user->profile->description)) }}" 
+                    autocomplete="description" autofocus></textarea>
 
                     @if ($errors->has('description'))
                         <span class="invalid-feedback" role="alert">
